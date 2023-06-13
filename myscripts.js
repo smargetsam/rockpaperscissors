@@ -10,35 +10,15 @@ function generateCompRPS() {
     switch (choice) {
         case 1:
             return "rock"
-            break;
+          
         case 2:
             return "scissors"
-            break;
+         
         case 3:
-            return "paper"
-            break;
+            return "paper" 
     }
 }
 
-function getUserChoice() {
-    let choice = prompt("What is your response to ROCK-PAPER-SCISSORS-SHOOT?")
-    switch (choice.toLowerCase()) {
-        case "rock":
-            return "rock"
-            break;
-
-        case "paper":
-            return "paper"
-            break;
-
-        case "scissors":
-            return "scissors"
-            break;
-        default:
-            console.log("that was invalid, try again")
-            getUserChoice();
-    }
-}
 
 function getRandomVal(max, min) {
     min = Math.ceil(min);
@@ -54,17 +34,46 @@ function game(compchoice, playerchoice) {
         case "rockpaper":
         case "scissorsrock":
         case "paperscissors":
-            console.log("you win! The computer chose " + compchoice + " and your choice of " + playerchoice + " beats " + compchoice)
-            break;
+            return "you win! The computer chose " + compchoice + " and your choice of " + playerchoice + " beats " + compchoice 
+            
         case "rockrock":
         case "paperpaper":
         case "scissorsscissors":
-            console.log("The computer also chose " + compchoice + ". Its a draw! refresh to play again.")
-            break;
+            return "The computer also chose " + compchoice + ". Its a draw! refresh to play again."
+            
         default:
-            console.log("you lost! The computer chose " + compchoice + " which beats your choice of  " + playerchoice)
+            return "you lost! The computer chose " + compchoice + " which beats your choice of  " + playerchoice
     }
 
 }
 
-console.log(game(generateCompRPS(), getUserChoice()))
+//console.log(game(generateCompRPS(), getUserChoice()))
+
+const buttonrock = document.getElementById("rock");
+buttonrock.addEventListener("click", () =>{
+    myFunction("rock")
+
+})
+
+const buttonpaper = document.getElementById("paper");
+buttonpaper.addEventListener("click", () =>{
+    myFunction("paper")
+
+})
+
+const buttonscissors = document.getElementById("scissors");
+buttonscissors.addEventListener("click", () =>{
+    myFunction("scissors");
+
+})
+
+
+function myFunction(tool){
+const bottombit = document.getElementById("bottomtext");
+bottombit.innerText = game(generateCompRPS(),tool);
+
+
+
+document.getElementById("demo").innerHTML = Date();
+}
+
